@@ -180,7 +180,7 @@ typedef struct{
   * param:  none
   * retval: none
   */
-_INLINE void hsi_enable(void){
+__INLINE void hsi_enable(void){
 	 RCC->CR |= hsi_on;
 }
 
@@ -197,7 +197,7 @@ __INLINE void hsi_disable(void){
   * param:  none
   * retval: none
   */
-_INLINE void lsi_enable(void){
+__INLINE void lsi_enable(void){
 	 
 	 RCC->CSR |= lsi_on ;
 }
