@@ -6,22 +6,38 @@
 
 #include "conf.h"
 
+/**brief:  set AHB prescaler
+  *param:  prescalar value
+  *retval: none
+  */
 __STATIC_INLINE void ahb_setpre(uint32_t pre){
 
 	 
 	 RCC->CFGR |= pre;
 }
 
+/**brief:  set APB1 prescaler
+  *param:  prescalar value
+  *retval: none
+  */
 __STATIC_INLINE void apb1_setpre(uint32_t pre){
 	 
 	 RCC->CFGR |= pre;
 }
 
+/**brief:  set APB2 prescaler
+  *param:  prescalar value
+  *retval: none
+  */
 __STATIC_INLINE void apb2_setpre(uint32_t pre){
 	 
 	 RCC->CFGR |= pre;
 }
 
+/**brief:  Oscillator configuration API
+  *param:  pointer to osc_initTypedef
+  *retval: 1->SUCCESS, 0->ERROR
+  */
 uint32_t osc_config(osc_initTypedef* osc){
 	 
 	 if((osc->hse_state) == osc_ie(hse)){             //HSE CONFIGURATION
@@ -137,6 +153,10 @@ uint32_t osc_config(osc_initTypedef* osc){
 	 return 1;
 }
 
+/**brief:  Clock configuration API
+  *param:  pointer to clk_initTypedef
+  *retval: 1->SUCCESS, 0->ERROR
+  */
 uint32_t clk_config(clk_initTypedef* clk, uint32_t flash_latency){
 
 	if(flash_latency > get_latency()){
