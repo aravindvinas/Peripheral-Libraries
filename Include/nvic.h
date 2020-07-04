@@ -30,13 +30,13 @@ void nvic_setprio(IRQn_Type irq, uint32_t preempt_prio, uint32_t sub_prio);
 
 void nvic_enable_it(IRQn_Type irq);
 
-void nvic_disable_it(IRQn_Typek irq);
+void nvic_disable_it(IRQn_Type irq);
 
 void nvic_sys_reset(void);
 
-uint32_t void nvic_getpriogrouping(void);
+uint32_t nvic_getpriogrouping(void);
 
-void nvic_getprio(IRQn_Type irq, uint32_t group_prio uint32_t preempt_prio, uint32_t sub_prio);
+void nvic_getprio(IRQn_Type irq, uint32_t group_prio, uint32_t preempt_prio, uint32_t sub_prio);
 
 uint32_t nvic_getpenirq(IRQn_Type irq);
 
