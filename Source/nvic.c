@@ -39,7 +39,7 @@ void nvic_enable_it(IRQn_Type irq){
  * param  : interrupt number
  * retval : none
  */
-void nvic_disable_it(IRQn_Typek irq){
+void nvic_disable_it(IRQn_Type irq){
      
 	 NVIC_DisableIRQ(irq);
 }
@@ -57,7 +57,7 @@ void nvic_sys_reset(void){
  * param  : none
  * retval : group priority
  */
-uint32_t void nvic_getpriogrouping(void){
+uint32_t nvic_getpriogrouping(void){
 	 
 	 return NVIC_GetPriorityGrouping();
 }
@@ -66,7 +66,7 @@ uint32_t void nvic_getpriogrouping(void){
  * param  : interrupt number, variables to store group, preempt and sub priority values
  * retval : none
  */
-void nvic_getprio(IRQn_Type irq, uint32_t group_prio uint32_t preempt_prio, uint32_t sub_prio){
+void nvic_getprio(IRQn_Type irq, uint32_t group_prio, uint32_t preempt_prio, uint32_t sub_prio){
 	 
 	 NVIC_DecodePriority(NVIC_GetPriority(irq), group_prio, preempt_prio, sub_prio);
 }
@@ -77,7 +77,8 @@ void nvic_getprio(IRQn_Type irq, uint32_t group_prio uint32_t preempt_prio, uint
   */
 uint32_t nvic_getpenirq(IRQn_Type irq){
 	 
-	 NVIC_GetPendingIRQ(irq);
+	 uint32_t irqn = NVIC_GetPendingIRQ(irq);
+	 return irqn;
 }
 
 /**brief  : set pending interrupt
@@ -86,7 +87,7 @@ uint32_t nvic_getpenirq(IRQn_Type irq){
   */
 void nvic_setpenirq(IRQn_Type irq){
 	 
-	 NVIC_SetPendingIRQ();
+	 NVIC_SetPendingIRQ(irq);
 }
 
 /**brief  : clear pending interrupt
