@@ -6,22 +6,13 @@
 
 #include "conf.h"
 
-void NMI_Handler(void){
-	 
-	 if(css_irq()){         //Clock Security System Interrupt
-
-		 hse_enable();            // HSE enable
-		 osc_itenable(hse_it);    // HSE interrupt enable
-		 css_callback();          // CSS callback function
-		 css_clrpen();            // CSS clear pending bits
-	 }
-}
+void NMI_Handler(void){while(1){}}
 
 /**brief:  HardFault exception handler 
   *param:  none
   *retval: none
   */
-void HardFault_Handler(void){while(1)}
+void HardFault_Handler(void){while(1){}}
 
 /**brief:  Memory Management exception handler 
   *param:  none
@@ -64,6 +55,6 @@ void PendSV_Handler(void){while(1){}}
   *retval: none
   */
 void SysTick_Handler(void){
-	tick_inc();                    //SysTick handler calls func to increment tick count
+	time_inc();                    //SysTick handler calls func to increment tick count
 }
 
