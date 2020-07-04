@@ -49,7 +49,7 @@ void ms_delay(uint32_t period){
 	else{period+=(uint32_t)tick_freq;}
     
 	uint32_t tick_start = get_tick();
-	while(get_tick() - tick_start < period){__asm(NOP);}
+	while(get_tick() - tick_start < period){__NOP();}
 }
 
 /**brief  : Change Clk source of SysTick timer
@@ -66,4 +66,5 @@ void SysTick_ConfClkSrc(uint32_t ClkSrc){
 	else{
 		SysTick->CTRL |= SYSTICK_SOURCE_DIV8;
 	}
+}
 
