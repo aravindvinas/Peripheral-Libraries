@@ -29,6 +29,6 @@ void PendSV_Handler(void);
 
 void SysTick_Handler(void);
 
-void RCC_IRQHandler(void);
+void Flash_IRQHandler(void);
 
 #endif
