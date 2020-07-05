@@ -58,3 +58,11 @@ void SysTick_Handler(void){
 	time_inc();                    //SysTick handler calls func to increment tick count
 }
 
+/**brief:  Flash interrupt handler 
+  *param:  none
+  *retval: none
+  */
+void Flash_IRQHandler(void){
+	flash_irqhandler();
+}
+
