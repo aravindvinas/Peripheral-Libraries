@@ -19,14 +19,3 @@ int main(void){
 		 /****Insert User Code****/
 	 }
 }
-
-void SystemConfigClock(void){
-
-	 /****Configure System Core Clock****/
-}
-
-void Error_Handler(void){
-
-	 /****Error Handler****/
-}
-
