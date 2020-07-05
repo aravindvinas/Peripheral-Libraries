@@ -9,6 +9,5 @@
 
 #include "conf.h"
  
-void Error_Handler(void);
 #endif
 
