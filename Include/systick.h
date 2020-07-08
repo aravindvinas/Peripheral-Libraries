@@ -15,6 +15,8 @@
 #define SYSTICK_SOURCE_DIV8  (0x00000000U)
 #define SYSTICK_SOURCE       SysTick_CTRL_CLKSOURCE_Msk
 
+uint32_t SystemCoreClock = 8000000;
+
 
 
 /** keeps the tick count from start of systick initialisation.
