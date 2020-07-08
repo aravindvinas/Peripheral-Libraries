@@ -93,13 +93,20 @@ void flash_eraseall(void)
  *param:  None
  *retval: None 
  */
-__weak void flash_error_callback(void){}
+__weak void flash_error_callback(void)
+{
+ while(1);
+}
 
 /*brief:  Flash EOP Callback
  *param:  None
  *retval: None 
  */
-__weak void flash_eop_callback(void){}
+__weak void flash_eop_callback(void)
+{
+ while(1);
+}
+
 /*brief:  Flash interrupt handler
  *param:  None
  *retval: None 
