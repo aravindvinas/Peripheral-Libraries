@@ -6,7 +6,7 @@
 
 #include "conf.h"
 
-uin32_t uart_init(uart_handleTypedef *handle)
+void uart_init(uart_handleTypedef *handle)
 {
   uint32_t regDef = 0;
 
