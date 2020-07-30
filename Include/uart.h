@@ -58,7 +58,7 @@ typdef struct{
 #define USART_FCTRL_CTS     2U
 #define USART_FCTRL_RTS_CTS 3U
 
-uint32_t uart_init(uart_handleTypedef *handle);
+void uart_init(uart_handleTypedef *handle);
 uint32_t uart_transmit(uint8_t *data);
 
 #endif
