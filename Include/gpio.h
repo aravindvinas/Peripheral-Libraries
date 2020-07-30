@@ -79,4 +79,9 @@ typdef struct{
 #define GPIO_AF_13   13
 #define GPIO_AF_14   14
 #define GPIO_AF_15   15
+
+//@ Initialise and Deinitialise Func
+void gpio_init(gpio_handleTypdef *handle);
+void gpio_deinit(gpio_handleTypdef *handle);
+
 #endif
