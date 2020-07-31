@@ -10,22 +10,22 @@
 #include "def.h"
 
 typedef struct{
-  uint32_t baudrate;
-  uint32_t word_len;
-  uint32_t parity_bit;
-  uint32_t stop_bit;
-  uint32_t mode;
-  uint32_t hw_fctrl;
-}uart_configTypedef;
+  uint32_t usart_baud;
+  uint32_t usart_word;
+  uint32_t usart_parity;
+  uint32_t usart_stop;
+  uint32_t usart_mode;
+  uint32_t usart_hw_fctrl;
+}usart_configTypedef;
 
 typdef struct{
-  uart_configTypedef config;
+  usart_configTypedef config;
   USART_TypeDef reg;
   uint8_t *txBuf;
   uint8_t *rxBuf;
   uint32_t txState;
   uint32_t rxState; 
-}uart_handleTypedef;
+}usart_handleTypedef;
 
 //@ baud rate 
 #define USART_BAUD_9600   9600U
@@ -58,7 +58,8 @@ typdef struct{
 #define USART_FCTRL_CTS     2U
 #define USART_FCTRL_RTS_CTS 3U
 
-void uart_init(uart_handleTypedef *handle);
-uint32_t uart_transmit(uint8_t *data);
+//@ USART INIT DEINIT FUNC
+void usart_init(uart_handleTypedef *handle);
+void usart_deinit(uart_handleTypedef *handle);
 
 #endif
