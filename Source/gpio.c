@@ -183,7 +183,7 @@ void gpio_init(gpio_handleTypdef *handle)
   uint32_t temp = 0;
   uint32_t pos = handle->config.pin_no;
   uint32_t reg = handle->reg;
-  __peri_clk_enable(handle);
+  peri_clk_enable(handle);
 
   /****** MODER REG CONFIG ******/ 
   temp = GPIO_MODER_MODER0;
@@ -231,7 +231,6 @@ void gpio_init(gpio_handleTypdef *handle)
 
 void gpio_deinit(gpio_handleTypedef *handle)
 {
-  __peri_reset(handle);
-  __peri_clk_disable(handle);
+  peri_reset(handle);
 }
 
