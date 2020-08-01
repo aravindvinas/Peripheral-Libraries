@@ -230,7 +230,8 @@ void gpio_init(gpio_handleTypdef *handle)
 }
 
 void gpio_deinit(gpio_handleTypedef *handle)
-{
-  peri_reset(handle);
+{ 
+ peri_reset(handle);
+ peri_disable(handle);
 }
 
