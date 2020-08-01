@@ -7,7 +7,7 @@
 
 #include "conf.h"
 
-static void __peri_clk_enable(gpio_handleTypedef *handle)
+static void peri_clk_enable(gpio_handleTypedef *handle)
 {
   switch(handle->reg)
   {
@@ -64,7 +64,7 @@ static void __peri_clk_enable(gpio_handleTypedef *handle)
   }
 }
 
-static void __peri_clk_disable(gpio_handleTypedef *handle)
+static void peri_clk_disable(gpio_handleTypedef *handle)
 {
   switch(handle->reg)
   {
@@ -121,7 +121,7 @@ static void __peri_clk_disable(gpio_handleTypedef *handle)
   }
 }
 
-static void __peri_reset(gpio_handleTypedef *handle)
+static void peri_reset(gpio_handleTypedef *handle)
 {
   switch (handle->reg)
   {
