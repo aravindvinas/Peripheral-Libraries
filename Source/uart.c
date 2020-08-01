@@ -111,7 +111,7 @@ void usart_init(uart_handleTypedef *handle)
   uint32_t temp = 0;
   uint32_t reg = handle->reg;
 
-  __peri_clk_enable(handle);
+  peri_clk_enable(handle);
 
   /*****USART CR1 REG CONFIG******/
   temp = (USART_CR1_PCE | USART_CR1_PS | USART_CR1_M0);
@@ -143,5 +143,5 @@ void usart_init(uart_handleTypedef *handle)
 
 void usart_deinit(usart_handleTypedef *handle)
 {
-  __peri_clk_disable();
+  peri_clk_disable();
 }
