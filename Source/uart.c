@@ -143,5 +143,6 @@ void usart_init(uart_handleTypedef *handle)
 
 void usart_deinit(usart_handleTypedef *handle)
 {
-  peri_clk_disable();
+ peri_reset(); 
+ peri_clk_disable();
 }
