@@ -6,7 +6,7 @@
 
 #include "conf.h"
 
-static void __peri_clk_enable(usart_Typedef *handle)
+static void peri_clk_enable(usart_Typedef *handle)
 {
   switch (handle->reg)
   {
@@ -39,7 +39,7 @@ static void __peri_clk_enable(usart_Typedef *handle)
   }
 }
 
-static void __peri_clk_disable(usart_Typedef *handle)
+static void peri_clk_disable(usart_Typedef *handle)
 {
 
   switch (handle->reg)
@@ -73,7 +73,7 @@ static void __peri_clk_disable(usart_Typedef *handle)
   }
 }
 
-static void __peri_reset(usart_Typedef *handle)
+static void peri_reset(usart_Typedef *handle)
 {
   switch (handle->reg)
   {
