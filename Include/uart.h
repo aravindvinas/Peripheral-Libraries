@@ -1,7 +1,7 @@
 /**
-  *file:   uart.c
+  *file:   uart.h
   *author: Vinas 
-  *brief:  UART driver file 
+  *brief:  UART driver header file 
   */  
 
 #ifndef __UART_H
@@ -18,9 +18,9 @@ typedef struct{
   uint32_t usart_hw_fctrl;
 }usart_configTypedef;
 
-typdef struct{
+typedef struct{
   usart_configTypedef config;
-  USART_TypeDef reg;
+  USART_TypeDef* reg;
   uint8_t *txBuf;
   uint8_t *rxBuf;
   uint32_t txState;
@@ -59,7 +59,7 @@ typdef struct{
 #define USART_FCTRL_RTS_CTS 3U
 
 //@ USART INIT DEINIT FUNC
-void usart_init(uart_handleTypedef *handle);
-void usart_deinit(uart_handleTypedef *handle);
+void usart_init(usart_handleTypedef *handle);
+void usart_deinit(usart_handleTypedef *handle);
 
 #endif
