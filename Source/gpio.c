@@ -7,56 +7,56 @@
 
 #include "conf.h"
 
-static void peri_clk_enable(gpio_handleTypedef *handle)
+/*static void peri_clk_enable(gpio_handleTypedef *handle)
 {
   switch(handle->reg)
   {
     case GPIOA:
       do{
         RCC->AHBENR |= RCC_AHBENR_GPIOAEN;
-      }while(0)
+      }while(0);
       break;
 
     case GPIOB:
       do{
         RCC->AHBENR |= RCC_AHBENR_GPIOBEN;
-      }while(0)  
+      }while(0);  
       break;
       
     case GPIOC:
       do{
         RCC->AHBENR |= RCC_AHBENR_GPIOCEN;
-      }while(0)  
+      }while(0);  
       break;
       
     case GPIOD:
       do{
         RCC->AHBENR |= RCC_AHBENR_GPIODEN;
-      }while(0)  
+      }while(0);  
       break;
       
     case GPIOE:
       do{
         RCC->AHBENR |= RCC_AHBENR_GPIOEEN;
-      }while(0)  
+      }while(0);  
       break;
       
     case GPIOF:
       do{
         RCC->AHBENR |= RCC_AHBENR_GPIOFEN;
-      }while(0)  
+      }while(0);  
       break;
 
     case GPIOG:
       do{
         RCC->AHBENR |= RCC_AHBENR_GPIOGEN;
-      }while(0)  
+      }while(0);  
       break;
 
     case GPIOH:
       do{
         RCC->AHBENR |= RCC_AHBENR_GPIOHEN;
-      }while(0)  
+      }while(0);  
       break;
 
     default:
@@ -71,49 +71,49 @@ static void peri_clk_disable(gpio_handleTypedef *handle)
     case GPIOA:
       do{
         RCC->AHBENR &= ~RCC_AHBENR_GPIOAEN;
-      }while(0)
+      }while(0);
       break;
 
     case GPIOB:
       do{
         RCC->AHBENR &= ~RCC_AHBENR_GPIOBEN;
-      }while(0)
+      }while(0);
       break;
 
     case GPIOC:
       do{
         RCC->AHBENR &= ~RCC_AHBENR_GPIOCEN;
-      }while(0)
+      }while(0);
       break;
 
     case GPIOD:
       do{
         RCC->AHBENR &= ~RCC_AHBENR_GPIODEN;
-      }while(0)
+      }while(0);
       break;
 
     case GPIOE:
       do{
         RCC->AHBENR &= ~RCC_AHBENR_GPIOEEN;
-      }while(0)
+      }while(0);
       break;
 
     case GPIOF:
       do{
         RCC->AHBENR &= ~RCC_AHBENR_GPIOFEN;
-      }while(0)
+      }while(0);
       break;
 
     case GPIOG:
       do{
         RCC->AHBENR &= ~RCC_AHBENR_GPIOGEN;
-      }while(0)
+      }while(0);
       break;
 
     case GPIOH:
       do{
         RCC->AHBENR &= ~RCC_AHBENR_GPIOHEN;
-      }while(0)
+      }while(0);
       break;
 
     default:
@@ -128,62 +128,62 @@ static void peri_reset(gpio_handleTypedef *handle)
   case GPIOA:
     do{
       RCC->AHBRSTR |= RCC_AHBRSTR_GPIOARST;
-    }while(0)
+    }while(0);
     break;
 
   case GPIOB:
     do{
       RCC->AHBRSTR |= RCC_AHBRSTR_GPIOBRST;
-    }while(0)
+    }while(0);
     break;
 
   case GPIOC:
     do{
       RCC->AHBRSTR |= RCC_AHBRSTR_GPIOCRST;
-    }while(0)
+    }while(0);
     break;
     
   case GPIOD:
     do{
       RCC->AHBRSTR |= RCC_AHBRSTR_GPIODRST;
-    }while(0)
+    }while(0);
     break;
 
   case GPIOE:
     do{
       RCC->AHBRSTR |= RCC_AHBRSTR_GPIOERST;
-    }while(0)
+    }while(0);
     break;
 
   case GPIOF:
     do{
       RCC->AHBRSTR |= RCC_AHBRSTR_GPIOFRST;
-    }while(0)
+    }while(0);
     break;
 
   case GPIOG:
     do{
       RCC->AHBRSTR |= RCC_AHBRSTR_GPIOGRST;
-    }while(0)
+    }while(0);
     break;
 
   case GPIOH:
     do{
       RCC->AHBRSTR |= RCC_AHBRSTR_GPIOHRST;
-    }while(0)
+    }while(0);
     break;
   
   default:
     break;
   }
-}
+}*/
 
-void gpio_init(gpio_handleTypdef *handle)
+void gpio_init(gpio_handleTypedef *handle)
 {
   uint32_t temp = 0;
   uint32_t pos = handle->config.pin_no;
-  uint32_t reg = handle->reg;
-  peri_clk_enable(handle);
+  GPIO_TypeDef* reg = handle->reg;
+  //__peri_clk_enable(handle);
 
   /****** MODER REG CONFIG ******/ 
   temp = GPIO_MODER_MODER0;
@@ -230,8 +230,8 @@ void gpio_init(gpio_handleTypdef *handle)
 }
 
 void gpio_deinit(gpio_handleTypedef *handle)
-{ 
- peri_reset(handle);
- peri_disable(handle);
+{
+  //peri_reset(handle);
+  //peri_clk_disable(handle);
 }
 
