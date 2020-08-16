@@ -6,7 +6,7 @@
 
 #include "conf.h"
 
-static void peri_clk_enable(usart_Typedef *handle)
+/*static void peri_clk_enable(usart_handleTypedef *handle)
 {
   switch (handle->reg)
   {
@@ -14,32 +14,32 @@ static void peri_clk_enable(usart_Typedef *handle)
     do{
       RCC->APB1ENR |= RCC_APB1ENR_USART2EN;
       break;
-    }while(0)
+    }while(0);
 
   case USART3:
     do{
       RCC->APB1ENR |= RCC_APB1ENR_USART3EN;
       break;
-    }while(0)
+    }while(0);
 
   case UART4:
     do{
       RCC->APB1ENR |= RCC_APB1ENR_UART4EN;
       break;
-    }while(0)
+    }while(0);
 
   case UART5:
     do{
       RCC->APB1ENR |= RCC_APB1ENR_UART5EN;
       break;
-    }while(0)
+    }while(0);
   
   default:
     break;
   }
 }
 
-static void peri_clk_disable(usart_Typedef *handle)
+static void peri_clk_disable(usart_handleTypedef *handle)
 {
 
   switch (handle->reg)
@@ -48,32 +48,32 @@ static void peri_clk_disable(usart_Typedef *handle)
     do{
       RCC->APB1ENR &= ~(RCC_APB1ENR_USART2EN);
       break;
-    }while(0)
+    }while(0);
 
   case USART3:
     do{
       RCC->APB1ENR &= ~(RCC_APB1ENR_USART3EN);
       break;
-    }while(0)
+    }while(0);
 
   case UART4:
     do{
       RCC->APB1ENR &= ~(RCC_APB1ENR_UART4EN);
       break;
-    }while(0)
+    }while(0);
 
   case UART5:
     do{
       RCC->APB1ENR &= ~(RCC_APB1ENR_UART5EN);
       break;
-    }while(0)
+    }while(0);
   
   default:
     break;
   }
 }
 
-static void peri_reset(usart_Typedef *handle)
+static void peri_reset(usart_handleTypedef *handle)
 {
   switch (handle->reg)
   {
@@ -81,37 +81,37 @@ static void peri_reset(usart_Typedef *handle)
     do{
       RCC->APB1RSTR |= RCC_APB1RSTR_USART2RST;
       break;
-    }
+    }while(0);
 
   case USART3:
     do{
       RCC->APB1RSTR |= RCC_APB1RSTR_USART3RST;
       break;
-    }
+    }while(0);
 
   case UART4:
     do{
       RCC->APB1RSTR |= RCC_APB1RSTR_UART4RST;
       break;
-    }
+    }while(0);
 
   case UART5:
     do{
       RCC->APB1RSTR |= RCC_APB1RSTR_UART5;
       break;
-    }
+    }while(0);
   
   default:
     break;
   }
-}
+}*/
 
-void usart_init(uart_handleTypedef *handle)
+void usart_init(usart_handleTypedef *handle)
 {
   uint32_t temp = 0;
-  uint32_t reg = handle->reg;
+  USART_TypeDef* reg = handle->reg;
 
-  peri_clk_enable(handle);
+  //peri_clk_enable(handle);
 
   /*****USART CR1 REG CONFIG******/
   temp = (USART_CR1_PCE | USART_CR1_PS | USART_CR1_M0);
@@ -122,7 +122,7 @@ void usart_init(uart_handleTypedef *handle)
 
   /******USART CR2 REG CONFIG******/
   temp = 0;
-  temp = USART_CR1_STOP;
+  temp = USART_CR2_STOP;
   temp &= (handle->config.usart_stop << USART_CR2_STOP_Pos);
   reg->CR2 &= USART_CR2_STOP;
   reg->CR2 |= temp;
@@ -130,19 +130,19 @@ void usart_init(uart_handleTypedef *handle)
   /******USART CR3 REG CONFIG******/
   temp = 0;
   temp = (USART_CR3_RTSE | USART_CR3_CTSE);
-  temp = (handle->config.usart_hw_fctrl) << USART_CR3_RTSE);
+  temp = ((handle->config.usart_hw_fctrl) << USART_CR3_RTSE);
   reg->CR3 &= (USART_CR3_RTSE | USART_CR3_CTSE);
   reg->CR3 |= temp;
 
   /******USART BRR REG CONFIG******/
-  handle->reg.BRR |= 0x341; //8MHz fClk and 9600 bits/sec
+  handle->reg->BRR |= 0x341; //8MHz fClk and 9600 bits/sec
 
   /******USART ENABLE******/
-  handle->reg.CR1 |= (1 << USART_CR1_UE_Pos);
+  handle->reg->CR1 |= (1 << USART_CR1_UE_Pos);
 }
 
 void usart_deinit(usart_handleTypedef *handle)
 {
- peri_reset(); 
- peri_clk_disable();
+  //peri_reset(handle);
+  //peri_clk_disable(handle);
 }
