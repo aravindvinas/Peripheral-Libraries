@@ -17,12 +17,12 @@ typedef struct{
   uint32_t pin_pp_od;
   uint32_t pin_speed;
   uint32_t pin_alter;
-}gpio_configTypdef
+}gpio_configTypedef;
 
-typdef struct{
-  gpio_configTypdef config;
-  GPIO_Typdef reg;
-}gpio_handleTypdef;
+typedef struct{
+  gpio_configTypedef config;
+  GPIO_TypeDef* reg;
+}gpio_handleTypedef;
 
 //@ GPIO PINS
 #define GPIO_PIN_0    0
@@ -81,7 +81,11 @@ typdef struct{
 #define GPIO_AF_15   15
 
 //@ Initialise and Deinitialise Func
-void gpio_init(gpio_handleTypdef *handle);
-void gpio_deinit(gpio_handleTypdef *handle);
+void gpio_init(gpio_handleTypedef *handle);
+void gpio_deinit(gpio_handleTypedef *handle);
+
+
+
+
 
 #endif
